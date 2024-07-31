@@ -1,2 +1,2 @@
 # fivedays
-Calculate wich months in a yaer that have 5 of the same weekday
+Calculate which months in a year that have five weeks with the same weekday
