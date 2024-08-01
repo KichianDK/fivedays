@@ -27,5 +27,10 @@ func main() {
 		os.Exit(0)
 	}
 
-	calculator.Run(*fromYear, *toYear, time.Weekday(*weekDay), *googleCalendarId, *calendarText, *importDates)
+	months, _ := calculator.Run(*fromYear, *toYear, time.Weekday(*weekDay), *googleCalendarId, *calendarText, *importDates)
+
+	for _, month := range months {
+		fmt.Printf("Year: %d - Month: %d\n", month.Year(), month.Month())
+	}
+
 }

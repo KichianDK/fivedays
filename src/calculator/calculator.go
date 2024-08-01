@@ -5,17 +5,15 @@ import (
 	"time"
 )
 
-func Run(fromYear int, toYear int, weekDay time.Weekday, calendarId string, headline string, importDates bool) {
+// Returns the first searched for weekday for each month with 5 occurences of that weekday.
+func Run(fromYear int, toYear int, weekDay time.Weekday, calendarId string, headline string, importDates bool) ([]time.Time, error) {
 	months := monthsWithTheFiveWeekdays(fromYear, toYear, weekDay)
 
-	fmt.Printf("Found: %v\n", months)
-
-	if !importDates {
-		fmt.Println("Done")
-		return
-	} else {
-		addDaysToCalendar(calendarId, headline, &months)
+	if importDates {
+		return months, addDaysToCalendar(calendarId, headline, &months)
 	}
+
+	return months, nil
 }
 
 func monthsWithTheFiveWeekdays(fromYear int, toYear int, weekDay time.Weekday) []time.Time {
@@ -51,6 +49,7 @@ func lastDayInMonth(year int, month int) int {
 	}
 }
 
-func addDaysToCalendar(calendarId string, headline string, dates *[]time.Time) {
+func addDaysToCalendar(calendarId string, headline string, dates *[]time.Time) error {
 	fmt.Printf("Not implemented yet: %s, %s, %d\n", calendarId, headline, len(*dates))
+	return nil
 }
